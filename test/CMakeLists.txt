@@ -20,17 +20,12 @@ include_directories(
 
 add_executable(ixwebsocket_unittest 
   test_runner.cpp
-
-  #cmd_websocket_chat.cpp
-  #IXWebSocketServerTest.cpp
-
+  cmd_websocket_chat.cpp
+  IXWebSocketServerTest.cpp
   IXSocketTest.cpp
   IXTest.cpp
   msgpack11.cpp
 )
-
-#if (NOT WIN32)
-#endif()
 
 if (APPLE AND USE_TLS)
     target_link_libraries(ixwebsocket_unittest "-framework foundation" "-framework security")
