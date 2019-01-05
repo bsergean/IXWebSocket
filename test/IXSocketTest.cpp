@@ -27,17 +27,20 @@ namespace ix
                     int port,
                     const std::string& request,
                     std::shared_ptr<Socket> socket,
-                    int expectedStatus)
+                    int expectedStatus,
+                    int timeoutSecs)
     {
         std::string errMsg;
         static std::atomic<bool> requestInitCancellation(false);
         auto isCancellationRequested =
-            makeCancellationRequestWithTimeout(1, requestInitCancellation);
+            makeCancellationRequestWithTimeout(timeoutSecs, requestInitCancellation);
 
         bool success = socket->connect(host, port, errMsg, isCancellationRequested);
         REQUIRE(success);
 
-        std::cout << "writeBytes" << std::endl;
+        std::cout << "Sending request: " << request
+                  << "to " << host << ":" << port
+                  << std::endl;
         socket->writeBytes(request, isCancellationRequested);
 
         auto lineResult = socket->readLine(isCancellationRequested);
@@ -61,8 +64,9 @@ TEST_CASE("socket", "[socket]")
         int port = 80;
         std::string request("GET / HTTP/1.1\r\n\r\n");
         int expectedStatus = 200;
+        int timeoutSecs = 1;
 
-        testSocket(host, port, request, socket, expectedStatus);
+        testSocket(host, port, request, socket, expectedStatus, timeoutSecs);
     }
 
 #if defined(__APPLE__) or defined(__linux__)
@@ -77,8 +81,9 @@ TEST_CASE("socket", "[socket]")
         int port = 443;
         std::string request("GET / HTTP/1.1\r\n\r\n");
         int expectedStatus = 200;
+        int timeoutSecs = 1;
 
-        testSocket(host, port, request, socket, expectedStatus);
+        testSocket(host, port, request, socket, expectedStatus, timeoutSecs);
     }
 #endif
 }
