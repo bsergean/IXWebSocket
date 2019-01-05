@@ -59,4 +59,5 @@ shutil.copy(os.path.join(
 
 # unittest broken on Windows
 if osName != 'Windows':
-    os.system(testBinary)
+    testCommand = '{} {}'.format(testBinary, os.getenv('TEST', ''))
+    os.system(testCommand)
