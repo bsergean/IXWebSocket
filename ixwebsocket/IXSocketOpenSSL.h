@@ -36,6 +36,7 @@ namespace ix
         virtual int recv(void* buffer, size_t length) final;
 
     private:
+        void openSSLInitialize();
         std::string getSSLError(int ret);
         SSL_CTX* openSSLCreateContext(std::string& errMsg);
         bool openSSLHandshake(const std::string& hostname, std::string& errMsg);
@@ -44,10 +45,13 @@ namespace ix
                                     std::string& errMsg);
         bool checkHost(const std::string& host, const char *pattern);
 
-        SSL_CTX* _ssl_context;
         SSL* _ssl_connection;
+        SSL_CTX* _ssl_context;
         const SSL_METHOD* _ssl_method;
         mutable std::mutex _mutex;  // OpenSSL routines are not thread-safe
+
+        std::once_flag _openSSLInitFlag;
+        static std::atomic<bool> _openSSLInitializationSuccessful;
     };
 
 }
