@@ -36,6 +36,7 @@ namespace ix
         virtual int recv(void* buffer, size_t length) final;
 
     private:
+        bool openSSLInitialize();
         std::string getSSLError(int ret);
         SSL_CTX* openSSLCreateContext(std::string& errMsg);
         bool openSSLHandshake(const std::string& hostname, std::string& errMsg);
