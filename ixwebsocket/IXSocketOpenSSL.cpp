@@ -18,21 +18,15 @@
 #include <errno.h>
 #define socketerrno errno
 
-namespace {
-
-std::mutex initMutex;
-bool openSSLInitialized = false;
-bool openSSLInitializationSuccessful = false;
-
-}
-
 namespace ix 
 {
+    std::atomic<bool> SocketOpenSSL::_openSSLInitializationSuccessful(false);
+
     SocketOpenSSL::SocketOpenSSL(int fd) : Socket(fd),
         _ssl_connection(nullptr), 
         _ssl_context(nullptr)
     {
-        ;
+        std::call_once(_openSSLInitFlag, &SocketOpenSSL::openSSLInitialize, this);
     }
 
     SocketOpenSSL::~SocketOpenSSL()
@@ -40,22 +34,10 @@ namespace ix
         SocketOpenSSL::close();
     }
 
-    bool SocketOpenSSL::openSSLInitialize()
+    void SocketOpenSSL::openSSLInitialize()
     {
-        std::lock_guard<std::mutex> lock(initMutex);
-
-        if (openSSLInitialized)
-        {
-            return openSSLInitializationSuccessful;
-        }
-
 #if OPENSSL_VERSION_NUMBER >= 0x10100000L
-        if (!OPENSSL_init_ssl(OPENSSL_INIT_LOAD_CONFIG, nullptr))
-        {
-            openSSLInitializationSuccessful = false;
-            openSSLInitialized = true;
-            return false;
-        }
+        if (!OPENSSL_init_ssl(OPENSSL_INIT_LOAD_CONFIG, nullptr)) return;
 #else
         (void) OPENSSL_config(nullptr);
 #endif
@@ -63,8 +45,7 @@ namespace ix
         (void) OpenSSL_add_ssl_algorithms();
         (void) SSL_load_error_strings();
 
-        openSSLInitializationSuccessful = true;
-        return true;
+        _openSSLInitializationSuccessful = true;
     }
 
     std::string SocketOpenSSL::getSSLError(int ret)
@@ -269,7 +250,7 @@ namespace ix
         {
             std::lock_guard<std::mutex> lock(_mutex);
 
-            if (!openSSLInitialize())
+            if (!_openSSLInitializationSuccessful)
             {
                 errMsg = "OPENSSL_init_ssl failure";
                 return false;
