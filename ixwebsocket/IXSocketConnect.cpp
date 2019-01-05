@@ -77,8 +77,7 @@ namespace ix
         SocketConnect::configure(fd);
 
         if (::connect(fd, address->ai_addr, address->ai_addrlen) == -1
-            // && errno != EINPROGRESS)
-            && errno != EINVAL)
+            && errno != EINPROGRESS)
         {
             closeSocket(fd);
             errMsg = strerror(errno);

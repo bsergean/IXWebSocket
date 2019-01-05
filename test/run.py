@@ -42,8 +42,8 @@ def findFiles(prefix):
 
     return paths
 
-for path in findFiles('.'):
-    print(path)
+#for path in findFiles('.'):
+#    print(path)
 
 shutil.copy(os.path.join(
     '..',
