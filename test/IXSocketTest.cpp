@@ -16,7 +16,7 @@ using namespace ix;
 
 TEST_CASE("socket", "[socket]")
 {
-    SECTION("Connect to google server server. Send GET request without header. Should return 200")
+    SECTION("Connect to google server. Send GET request without header. Should return 200")
     {
         Socket socket;
         std::string host("www.google.com");

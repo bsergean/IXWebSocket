@@ -4,6 +4,10 @@
  *  Copyright (c) 2018 Machine Zone, Inc. All rights reserved.
  */
 
+//
+// http://itamarst.org/writings/win32sockets.html
+//
+
 #include "IXSocketConnect.h"
 #include "IXDNSLookup.h"
 
@@ -73,7 +77,8 @@ namespace ix
         SocketConnect::configure(fd);
 
         if (::connect(fd, address->ai_addr, address->ai_addrlen) == -1
-            && errno != EINPROGRESS)
+            // && errno != EINPROGRESS)
+            && errno != EINVAL)
         {
             closeSocket(fd);
             errMsg = strerror(errno);
