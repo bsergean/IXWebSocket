@@ -58,8 +58,6 @@ if (UNIX)
     IXDNSLookupTest.cpp
     cmd_websocket_chat.cpp
     IXWebSocketCloseTest.cpp
-    IXCobraChatTest.cpp
-    IXCobraMetricsPublisherTest.cpp
   )
 endif()
 
@@ -67,6 +65,14 @@ endif()
 if (MAC OR WIN32)
   list(APPEND SOURCES
     IXWebSocketMessageQTest.cpp
+  )
+endif()
+
+# run those things locally on a mac only for now
+if (MAC)
+  list(APPEND SOURCES
+    IXCobraChatTest.cpp
+    IXCobraMetricsPublisherTest.cpp
   )
 endif()
 
