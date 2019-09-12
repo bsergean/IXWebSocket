@@ -3,8 +3,7 @@ name: C/C++ CI
 on: [push]
 
 jobs:
-  linux:
-
+  # linux:
   #   runs-on: ubuntu-latest
   #   
   #   steps:
@@ -13,10 +12,10 @@ jobs:
   #     run: make test
 
   mac:
+    runs-on: macOS-latest
+
     env:
       HOMEBREW_NO_AUTO_UPDATE: 1
-
-    runs-on: macOS-latest
     
     steps:
     - uses: actions/checkout@v1
