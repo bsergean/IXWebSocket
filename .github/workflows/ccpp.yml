@@ -3,7 +3,7 @@ name: C/C++ CI
 on: [push]
 
 jobs:
-  # linux:
+  build:
   #   runs-on: ubuntu-latest
   #   
   #   steps:
@@ -11,7 +11,6 @@ jobs:
   #   - name: make test
   #     run: make test
 
-  mac:
     runs-on: macOS-latest
 
     env:
