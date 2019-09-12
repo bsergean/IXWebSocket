@@ -13,8 +13,8 @@ jobs:
 
     runs-on: macOS-latest
 
-    env:
-      HOMEBREW_NO_AUTO_UPDATE: 1
+    #env:
+    #  HOMEBREW_NO_AUTO_UPDATE: 1
     
     steps:
     - uses: actions/checkout@v1
