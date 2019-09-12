@@ -3,28 +3,47 @@ name: C/C++ CI
 on: [push]
 
 jobs:
-  linux:
-    runs-on: ubuntu-latest
-    
+  # linux:
+  #   runs-on: ubuntu-latest
+  #   
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - name: make test
+  #     run: make test
+
+  # mac:
+  #   runs-on: macOS-latest
+
+  #   #env:
+  #   #  HOMEBREW_NO_AUTO_UPDATE: 1
+  #   
+  #   steps:
+  #   - uses: actions/checkout@v1
+
+  #   - name: install redis
+  #     run: brew install redis
+
+  #   - name: start redis server
+  #     run: brew services start redis
+
+  #   - name: make test
+  #     run: make test
+
+  win:
+    runs-on: windows-latest
+
     steps:
     - uses: actions/checkout@v1
-    - name: make test
-      run: make test
 
-  mac:
-    runs-on: macOS-latest
-
-    #env:
-    #  HOMEBREW_NO_AUTO_UPDATE: 1
-    
-    steps:
-    - uses: actions/checkout@v1
-
-    - name: install redis
-      run: brew install redis
-
-    - name: start redis server
-      run: brew services start redis
-
-    - name: make test
-      run: make test
+    - name: mkdir build
+      run: mkdir build
+    - name: cd build
+      run: cd build
+    - name: cmake
+      run: cmake -DCMAKE_TOOLCHAIN_FILE=$VCPKG_INSTALLATION_ROOT/vcpkg.cmake -DUSE_WS=1 -DUSE_TEST=1 -DUSE_TLS=1 -G"NMake Makefiles" ..
+    - name: nmake
+      run: nmake
+    - name: cd ..\test
+      run: cd ..\test
+    - name: run tests
+      run: ..\build\test\ixwebsocket_unittest.exe
