@@ -35,15 +35,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: mkdir build
-      run: mkdir build
-    - name: cd build
-      run: cd build
-    - name: cmake
-      run: cmake -DCMAKE_TOOLCHAIN_FILE=$VCPKG_INSTALLATION_ROOT/vcpkg.cmake -DUSE_WS=1 -DUSE_TEST=1 -DUSE_TLS=1 -G"NMake Makefiles" ..
-    - name: nmake
-      run: nmake
-    - name: cd ..\test
-      run: cd ..\test
+    - name: run cmake
+      run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE=$VCPKG_INSTALLATION_ROOT/vcpkg.cmake -DUSE_WS=1 -DUSE_TEST=1 -DUSE_TLS=1 -G"NMake Makefiles" ..
+    - name: build
+      run: |
+        cd build
+        nmake
     - name: run tests
-      run: ..\build\test\ixwebsocket_unittest.exe
+      run: 
+        cd test
+        ..\build\test\ixwebsocket_unittest.exe
