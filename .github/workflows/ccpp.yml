@@ -22,10 +22,10 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: install redis
-      brew install redis
+      run: brew install redis
 
     - name: start redis server
-      brew services start redis
+      run: brew services start redis
 
     - name: make test
       run: make test
