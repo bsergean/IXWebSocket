@@ -3,11 +3,29 @@ name: C/C++ CI
 on: [push]
 
 jobs:
-  build:
+  linux:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
+  #   
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - name: make test
+  #     run: make test
+
+  mac:
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+
+    runs-on: macOS-latest
     
     steps:
     - uses: actions/checkout@v1
+
+    - name: install redis
+      brew install redis
+
+    - name: start redis server
+      brew services start redis
+
     - name: make test
       run: make test
