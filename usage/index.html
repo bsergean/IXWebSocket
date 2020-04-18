@@ -9,76 +9,69 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Examples - IXWebSocket</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">IXWebSocket</a>
-                </div>
+                <a class="navbar-brand" href="..">IXWebSocket</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../CHANGELOG/">Changelog</a>
+                            <li class="navitem">
+                                <a href="../CHANGELOG/" class="nav-link">Changelog</a>
                             </li>
-                            <li >
-                                <a href="../build/">Build</a>
+                            <li class="navitem">
+                                <a href="../build/" class="nav-link">Build</a>
                             </li>
-                            <li >
-                                <a href="../design/">Design</a>
+                            <li class="navitem">
+                                <a href="../cobra/" class="nav-link">Cobra</a>
                             </li>
-                            <li class="active">
-                                <a href="./">Examples</a>
+                            <li class="navitem">
+                                <a href="../design/" class="nav-link">Design</a>
                             </li>
-                            <li >
-                                <a href="../ws/">Ws</a>
+                            <li class="navitem">
+                                <a href="../packages/" class="nav-link">Packages</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Examples</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../ws/" class="nav-link">Ws</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../design/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../packages/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../ws/">
+                            <li class="nav-item">
+                                <a rel="next" href="../ws/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -88,23 +81,56 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#examples">Examples</a></li>
-            <li><a href="#windows-note">Windows note</a></li>
-            <li><a href="#websocket-client-api">WebSocket client API</a></li>
-            <li><a href="#websocket-server-api">WebSocket server API</a></li>
-            <li><a href="#http-client-api">HTTP client API</a></li>
-            <li><a href="#http-server-api">HTTP server API</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#examples" class="nav-link">Examples</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#windows-note" class="nav-link">Windows note</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#websocket-client-api" class="nav-link">WebSocket client API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#websocket-server-api" class="nav-link">WebSocket server API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#http-client-api" class="nav-link">HTTP client API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#http-server-api" class="nav-link">HTTP server API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tls-support-and-configuration" class="nav-link">TLS support and configuration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h1 id="examples">Examples</h1>
 <p>The <a href="https://github.com/machinezone/IXWebSocket/tree/master/ws"><em>ws</em></a> folder countains many interactive programs for chat, <a href="https://github.com/machinezone/IXWebSocket/blob/master/ws/ws_send.cpp">file transfers</a>, <a href="https://github.com/machinezone/IXWebSocket/blob/master/ws/ws_http_client.cpp">curl like</a> http clients, demonstrating client and server usage.</p>
 <h2 id="windows-note">Windows note</h2>
 <p>To use the network system on Windows, you need to initialize it once with <em>WSAStartup()</em> and clean it up with <em>WSACleanup()</em>. We have helpers for that which you can use, see below. This init would typically take place in your main function.</p>
-<pre><code>#include &lt;ixwebsocket/IXNetSystem.h&gt;
+<pre><code class="cpp">#include &lt;ixwebsocket/IXNetSystem.h&gt;
 
 int main()
 {
@@ -118,11 +144,11 @@ int main()
 </code></pre>
 
 <h2 id="websocket-client-api">WebSocket client API</h2>
-<pre><code>#include &lt;ixwebsocket/IXWebSocket.h&gt;
+<pre><code class="cpp">#include &lt;ixwebsocket/IXWebSocket.h&gt;
 
 ...
 
-# Our websocket object
+// Our websocket object
 ix::WebSocket webSocket;
 
 std::string url(&quot;ws://localhost:8080/&quot;);
@@ -130,7 +156,7 @@ webSocket.setUrl(url);
 
 // Optional heart beat, sent every 45 seconds when there is not any traffic
 // to make sure that load balancers do not kill an idle connection.
-webSocket.setHeartBeatPeriod(45);
+webSocket.setPingInterval(45);
 
 // Per message deflate connection is enabled by default. You can tweak its parameters or disable it
 webSocket.disablePerMessageDeflate();
@@ -172,8 +198,8 @@ webSocket.stop()
 <li>ReadyState::Closed     - The connection is closed or could not be opened.</li>
 </ol>
 <h3 id="open-and-close-notifications">Open and Close notifications</h3>
-<p>The onMessage event will be fired when the connection is opened or closed. This is similar to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">Javascript browser API</a>, which has <code>open</code> and <code>close</code> events notification that can be registered with the browser <code>addEventListener</code>.</p>
-<pre><code>webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr&amp; msg)
+<p>The onMessage event will be fired when the connection is opened or closed. This is similar to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">JavaScript browser API</a>, which has <code>open</code> and <code>close</code> events notification that can be registered with the browser <code>addEventListener</code>.</p>
+<pre><code class="cpp">webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr&amp; msg)
     {
         if (msg-&gt;type == ix::WebSocketMessageType::Open)
         {
@@ -201,7 +227,7 @@ webSocket.stop()
 
 <h3 id="error-notification">Error notification</h3>
 <p>A message will be fired when there is an error with the connection. The message type will be <code>ix::WebSocketMessageType::Error</code>. Multiple fields will be available on the event to describe the error.</p>
-<pre><code>webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr&amp; msg)
+<pre><code class="cpp">webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr&amp; msg)
     {
         if (msg-&gt;type == ix::WebSocketMessageType::Error)
         {
@@ -223,13 +249,13 @@ webSocket.stop()
 </ol>
 <h3 id="configuring-the-remote-url">Configuring the remote url</h3>
 <p>The url can be set and queried after a websocket object has been created. You will have to call <code>stop</code> and <code>start</code> if you want to disconnect and connect to that new url.</p>
-<pre><code>std::string url(&quot;wss://example.com&quot;);
+<pre><code class="cpp">std::string url(&quot;wss://example.com&quot;);
 websocket.configure(url);
 </code></pre>
 
 <h3 id="pingpong-support">Ping/Pong support</h3>
 <p>Ping/pong messages are used to implement keep-alive. 2 message types exists to identify ping and pong messages. Note that when a ping message is received, a pong is instantly send back as requested by the WebSocket spec.</p>
-<pre><code>webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr&amp; msg)
+<pre><code class="cpp">webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr&amp; msg)
     {
         if (msg-&gt;type == ix::WebSocketMessageType::Ping ||
             msg-&gt;type == ix::WebSocketMessageType::Pong)
@@ -241,26 +267,36 @@ websocket.configure(url);
 </code></pre>
 
 <p>A ping message can be sent to the server, with an optional data string.</p>
-<pre><code>websocket.ping(&quot;ping data, optional (empty string is ok): limited to 125 bytes long&quot;);
+<pre><code class="cpp">websocket.ping(&quot;ping data, optional (empty string is ok): limited to 125 bytes long&quot;);
 </code></pre>
 
 <h3 id="heartbeat">Heartbeat.</h3>
 <p>You can configure an optional heart beat / keep-alive, sent every 45 seconds
 when there is no any traffic to make sure that load balancers do not kill an
 idle connection.</p>
-<pre><code>webSocket.setHeartBeatPeriod(45);
+<pre><code class="cpp">webSocket.setPingInterval(45);
 </code></pre>
 
 <h3 id="supply-extra-http-headers">Supply extra HTTP headers.</h3>
 <p>You can set extra HTTP headers to be sent during the WebSocket handshake.</p>
-<pre><code>WebSocketHttpHeaders headers;
+<pre><code class="cpp">WebSocketHttpHeaders headers;
 headers[&quot;foo&quot;] = &quot;bar&quot;;
 webSocket.setExtraHeaders(headers);
 </code></pre>
 
+<h3 id="subprotocols">Subprotocols</h3>
+<p>You can specify subprotocols to be set during the WebSocket handshake. For more info you can refer to <a href="https://hpbn.co/websocket/#subprotocol-negotiation">this doc</a>.</p>
+<pre><code class="cpp">webSocket.addSubprotocol(&quot;appProtocol-v1&quot;);
+webSocket.addSubprotocol(&quot;appProtocol-v2&quot;);
+</code></pre>
+
+<p>The protocol that the server did accept is available in the open info <code>protocol</code> field.</p>
+<pre><code class="cpp">std::cout &lt;&lt; &quot;protocol: &quot; &lt;&lt; msg-&gt;openInfo.protocol &lt;&lt; std::endl;
+</code></pre>
+
 <h3 id="automatic-reconnection">Automatic reconnection</h3>
 <p>Automatic reconnection kicks in when the connection is disconnected without the user consent. This feature is on by default and can be turned off.</p>
-<pre><code>webSocket.enableAutomaticReconnection();  // turn on
+<pre><code class="cpp">webSocket.enableAutomaticReconnection();  // turn on
 webSocket.disableAutomaticReconnection(); // turn off
 bool enabled = webSocket.isAutomaticReconnectionEnabled(); // query state
 </code></pre>
@@ -289,12 +325,12 @@ Wait time(ms): 10000
 </code></pre>
 
 <p>The waiting time is capped by default at 10s between 2 attempts, but that value can be changed and queried.</p>
-<pre><code>webSocket.setMaxWaitBetweenReconnectionRetries(5 * 1000); // 5000ms = 5s
+<pre><code class="cpp">webSocket.setMaxWaitBetweenReconnectionRetries(5 * 1000); // 5000ms = 5s
 uint32_t m = webSocket.getMaxWaitBetweenReconnectionRetries();
 </code></pre>
 
 <h2 id="websocket-server-api">WebSocket server API</h2>
-<pre><code>#include &lt;ixwebsocket/IXWebSocketServer.h&gt;
+<pre><code class="cpp">#include &lt;ixwebsocket/IXWebSocketServer.h&gt;
 
 ...
 
@@ -357,7 +393,7 @@ server.wait();
 </code></pre>
 
 <h2 id="http-client-api">HTTP client API</h2>
-<pre><code>#include &lt;ixwebsocket/IXHttpClient.h&gt;
+<pre><code class="cpp">#include &lt;ixwebsocket/IXHttpClient.h&gt;
 
 ...
 
@@ -438,7 +474,7 @@ bool ok = httpClient.performRequest(args, [](const HttpResponsePtr&amp; response
 </code></pre>
 
 <h2 id="http-server-api">HTTP server API</h2>
-<pre><code>#include &lt;ixwebsocket/IXHttpServer.h&gt;
+<pre><code class="cpp">#include &lt;ixwebsocket/IXHttpServer.h&gt;
 
 ix::HttpServer server(port, hostname);
 
@@ -454,7 +490,7 @@ server.wait();
 </code></pre>
 
 <p>If you want to handle how requests are processed, implement the setOnConnectionCallback callback, which takes an HttpRequestPtr as input, and returns an HttpResponsePtr. You can look at HttpServer::setDefaultConnectionCallback for a slightly more advanced callback example.</p>
-<pre><code>setOnConnectionCallback(
+<pre><code class="cpp">setOnConnectionCallback(
     [this](HttpRequestPtr request,
            std::shared_ptr&lt;ConnectionState&gt; /*connectionState*/) -&gt; HttpResponsePtr
     {
@@ -471,7 +507,33 @@ server.wait();
                                               WebSocketHttpHeaders(),
                                               content);
 }
-</code></pre></div>
+</code></pre>
+
+<h2 id="tls-support-and-configuration">TLS support and configuration</h2>
+<p>To leverage TLS features, the library must be compiled with the option <code>USE_TLS=1</code>.</p>
+<p>If you are using OpenSSL, try to be on a version higher than 1.1.x as there there are thread safety problems with 1.0.x.</p>
+<p>Then, secure sockets are automatically used when connecting to a <code>wss://*</code> url.</p>
+<p>Additional TLS options can be configured by passing a <code>ix::SocketTLSOptions</code> instance to the
+<code>setTLSOptions</code> on <code>ix::WebSocket</code> (or <code>ix::WebSocketServer</code> or <code>ix::HttpServer</code>)</p>
+<pre><code class="cpp">webSocket.setTLSOptions({
+    .certFile = &quot;path/to/cert/file.pem&quot;,
+    .keyFile = &quot;path/to/key/file.pem&quot;,
+    .caFile = &quot;path/to/trust/bundle/file.pem&quot;,
+    .tls = true // required in server mode
+});
+</code></pre>
+
+<p>Specifying <code>certFile</code> and <code>keyFile</code> configures the certificate that will be used to communicate with TLS peers.</p>
+<p>On a client, this is only necessary for connecting to servers that require a client certificate.</p>
+<p>On a server, this is necessary for TLS support.</p>
+<p>Specifying <code>caFile</code> configures the trusted roots bundle file (in PEM format) that will be used to verify peer certificates.
+ - The special value of <code>SYSTEM</code> (the default) indicates that the system-configured trust bundle should be used; this is generally what you want when connecting to any publicly exposed API/server.
+ - The special value of <code>NONE</code> can be used to disable peer verification; this is only recommended to rule out certificate verification when testing connectivity.</p>
+<p>For a client, specifying <code>caFile</code> can be used if connecting to a server that uses a self-signed cert, or when using a custom CA in an internal environment.</p>
+<p>For a server, specifying <code>caFile</code> implies that:
+1. You require clients to present a certificate
+1. It must be signed by one of the trusted roots in the file</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -485,19 +547,19 @@ server.wait();
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
@@ -508,12 +570,12 @@ server.wait();
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

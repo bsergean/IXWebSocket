@@ -9,76 +9,69 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Design - IXWebSocket</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">IXWebSocket</a>
-                </div>
+                <a class="navbar-brand" href="..">IXWebSocket</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../CHANGELOG/">Changelog</a>
+                            <li class="navitem">
+                                <a href="../CHANGELOG/" class="nav-link">Changelog</a>
                             </li>
-                            <li >
-                                <a href="../build/">Build</a>
+                            <li class="navitem">
+                                <a href="../build/" class="nav-link">Build</a>
                             </li>
-                            <li class="active">
-                                <a href="./">Design</a>
+                            <li class="navitem">
+                                <a href="../cobra/" class="nav-link">Cobra</a>
                             </li>
-                            <li >
-                                <a href="../usage/">Examples</a>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Design</a>
                             </li>
-                            <li >
-                                <a href="../ws/">Ws</a>
+                            <li class="navitem">
+                                <a href="../packages/" class="nav-link">Packages</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../usage/" class="nav-link">Examples</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../ws/" class="nav-link">Ws</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../build/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../cobra/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../usage/">
+                            <li class="nav-item">
+                                <a rel="next" href="../packages/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -88,26 +81,43 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#implementation-details">Implementation details</a></li>
-            <li><a href="#per-message-deflate-compression">Per Message Deflate compression.</a></li>
-            <li><a href="#tlsssl">TLS/SSL</a></li>
-            <li><a href="#polling-and-background-thread-work">Polling and background thread work</a></li>
-            <li><a href="#automatic-reconnection">Automatic reconnection</a></li>
-            <li><a href="#large-messages">Large messages</a></li>
-            <li><a href="#testing">Testing</a></li>
-        <li class="main "><a href="#limitations">Limitations</a></li>
-        <li class="main "><a href="#c-code-organization">C++ code organization</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#implementation-details" class="nav-link">Implementation details</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#limitations" class="nav-link">Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#c-code-organization" class="nav-link">C++ code organization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h2 id="implementation-details">Implementation details</h2>
 <h3 id="per-message-deflate-compression">Per Message Deflate compression.</h3>
 <p>The per message deflate compression option is supported. It can lead to very nice bandbwith savings (20x !) if your messages are similar, which is often the case for example for chat applications. All features of the spec should be supported.</p>
 <h3 id="tlsssl">TLS/SSL</h3>
-<p>Connections can be optionally secured and encrypted with TLS/SSL when using a wss:// endpoint, or using normal un-encrypted socket with ws:// endpoints. AppleSSL is used on iOS and macOS, OpenSSL is used on Android and Linux, mbedTLS is used on Windows.</p>
+<p>Connections can be optionally secured and encrypted with TLS/SSL when using a wss:// endpoint, or using normal un-encrypted socket with ws:// endpoints. AppleSSL is used on iOS and macOS, OpenSSL and mbedTLS can be used on Android, Linux and Windows.</p>
+<p>If you are using OpenSSL, try to be on a version higher than 1.1.x as there there are thread safety problems with 1.0.x.</p>
 <h3 id="polling-and-background-thread-work">Polling and background thread work</h3>
 <p>No manual polling to fetch data is required. Data is sent and received instantly by using a background thread for receiving data and the select <a href="http://man7.org/linux/man-pages/man2/select.2.html">system</a> call to be notified by the OS of incoming data. No timeout is used for select so that the background thread is only woken up when data is available, to optimize battery life. This is also the recommended way of using select according to the select tutorial, section <a href="https://linux.die.net/man/2/select_tut">select law</a>. Read and Writes to the socket are non blocking. Data is sent right away and not enqueued by writing directly to the socket, which is <a href="https://stackoverflow.com/questions/1981372/are-parallel-calls-to-send-recv-on-the-same-socket-valid">possible</a> since system socket implementations allow concurrent read/writes. However concurrent writes need to be protected with mutex.</p>
 <h3 id="automatic-reconnection">Automatic reconnection</h3>
@@ -116,10 +126,18 @@
 <p>Large frames are broken up into smaller chunks or messages to avoid filling up the os tcp buffers, which is permitted thanks to WebSocket <a href="https://tools.ietf.org/html/rfc6455#section-5.4">fragmentation</a>. Messages up to 1G were sent and received succesfully.</p>
 <h3 id="testing">Testing</h3>
 <p>The library has an interactive tool which is handy for testing compatibility ith other libraries. We have tested our client against Python, Erlang, Node.js, and C++ websocket server libraries.</p>
-<p>The unittest tries to be comprehensive, and has been running on multiple platoform, with different sanitizers such as thread sanitizer to catch data races or the undefined behavior sanitizer.</p>
-<p>The regression test is running after each commit on travis.</p>
+<p>The unittest tries to be comprehensive, and has been running on multiple platforms, with different sanitizers such as a thread sanitizer to catch data races or the undefined behavior sanitizer.</p>
+<p>The regression test is running after each commit on github actions for multiple configurations.</p>
+<ul>
+<li>Linux</li>
+<li>macOS with thread sanitizer</li>
+<li>macOS, with OpenSSL, with thread sanitizer</li>
+<li>macOS, with MbedTLS, with thread sanitizer</li>
+<li>Windows, with MbedTLS (the unittest is not run yet)</li>
+</ul>
 <h2 id="limitations">Limitations</h2>
 <ul>
+<li>On Windows and Android certificate validation needs to be setup so that SocketTLSOptions.caFile point to a pem file, such as the one distributed by Firefox. Unless that setup is done connecting to a wss endpoint will display an error. On Windows with mbedtls the message will contain <code>error in handshake : X509 - Certificate verification failed, e.g. CRL, CA or signature check failed</code>.</li>
 <li>There is no convenient way to embed a ca cert.</li>
 <li>Automatic reconnection works at the TCP socket level, and will detect remote end disconnects. However, if the device/computer network become unreachable (by turning off wifi), it is quite hard to reliably and timely detect it at the socket level using <code>recv</code> and <code>send</code> error codes. <a href="https://stackoverflow.com/questions/14782143/linux-socket-how-to-detect-disconnected-network-in-a-client-program">Here</a> is a good discussion on the subject. This behavior is consistent with other runtimes such as node.js. One way to detect a disconnected device with low level C code is to do a name resolution with DNS but this can be expensive. Mobile devices have good and reliable API to do that.</li>
 <li>The server code is using select to detect incoming data, and creates one OS thread per connection. This is not as scalable as strategies using epoll or kqueue.</li>
@@ -159,6 +177,7 @@
 |                       |
 +-----------------------+
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -172,19 +191,19 @@
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
@@ -195,12 +214,12 @@
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
