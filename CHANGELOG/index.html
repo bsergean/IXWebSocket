@@ -95,6 +95,34 @@
             
             <li class="nav-item" data-level="1"><a href="#changelog" class="nav-link">Changelog</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#960-2020-05-12" class="nav-link">[9.6.0] - 2020-05-12</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#959-2020-05-12" class="nav-link">[9.5.9] - 2020-05-12</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#958-2020-05-08" class="nav-link">[9.5.8] - 2020-05-08</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#957-2020-05-08" class="nav-link">[9.5.7] - 2020-05-08</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#956-2020-05-06" class="nav-link">[9.5.6] - 2020-05-06</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#955-2020-05-06" class="nav-link">[9.5.5] - 2020-05-06</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#954-2020-05-04" class="nav-link">[9.5.4] - 2020-05-04</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#953-2020-04-29" class="nav-link">[9.5.3] - 2020-04-29</a>
               <ul class="nav flex-column">
               </ul>
@@ -712,6 +740,20 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>All changes to this project will be documented in this file.</p>
+<h2 id="960-2020-05-12">[9.6.0] - 2020-05-12</h2>
+<p>(ixbots) add options to limit how many messages per minute should be processed</p>
+<h2 id="959-2020-05-12">[9.5.9] - 2020-05-12</h2>
+<p>(ixbots) add new class to configure a bot to simplify passing options around</p>
+<h2 id="958-2020-05-08">[9.5.8] - 2020-05-08</h2>
+<p>(openssl tls) (openssl &lt; 1.1) logic inversion - crypto locking callback are not registered properly</p>
+<h2 id="957-2020-05-08">[9.5.7] - 2020-05-08</h2>
+<p>(cmake) default TLS back to mbedtls on Windows Universal Platform</p>
+<h2 id="956-2020-05-06">[9.5.6] - 2020-05-06</h2>
+<p>(cobra bots) add a --heartbeat_timeout option to specify when the bot should terminate because no events are received</p>
+<h2 id="955-2020-05-06">[9.5.5] - 2020-05-06</h2>
+<p>(openssl tls) when OpenSSL is older than 1.1, register the crypto locking callback to be thread safe. Should fix lots of CI failures</p>
+<h2 id="954-2020-05-04">[9.5.4] - 2020-05-04</h2>
+<p>(cobra bots) do not use a queue to store messages pending processing, let the bot handle queuing</p>
 <h2 id="953-2020-04-29">[9.5.3] - 2020-04-29</h2>
 <p>(http client) better current request cancellation support when the HttpClient destructor is invoked (see #189)</p>
 <h2 id="952-2020-04-27">[9.5.2] - 2020-04-27</h2>
@@ -1267,7 +1309,7 @@ ws_connect: connection closed: code 1000 reason Normal closure
                 </p>
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
